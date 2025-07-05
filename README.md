@@ -161,7 +161,8 @@ it automatically starts the FastAPI webhook server with environment variables fr
 
 🚀 Steps to Deploy to Render
 1️⃣ Prepare Render Configuration
-Render uses a render.yaml (or you can configure via the dashboard) to define services. For a FastAPI + Uvicorn app, here’s what you need:
+Render uses a render.yaml (or you can configure via the dashboard) to define services.
+For a FastAPI + Uvicorn app, here’s what you need:
 
 ✅ render.yaml (Place this in the root directory)
 
@@ -195,7 +196,8 @@ services:
         value: 0.02
       - key: MAX_POSITION_SIZE_BTC
         value: 0.005
-💡 You can also use Render’s dashboard UI to manually add these environment variables under your web service settings.
+💡 You can also use Render’s dashboard UI to manually
+   add these environment variables under your web service settings.
 
 2️⃣ Make the Project Render-Compatible
 Ensure the following are in place:
