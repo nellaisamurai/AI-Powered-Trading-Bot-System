@@ -8,16 +8,12 @@ An intelligent crypto trading bot built with Python, Binance Testnet, TradingVie
 
 ![](images/Screenshot6.png)
 
-yaml
-Copy
-Edit
-
 ---
 
 ## 📸 Screenshots
 
-| 📈 TradingView | ⚙️ Webhook Server | ✅ Trade Log |
-|---------------|------------------|--------------|
+| 📈 TradingView              | ⚙️ Webhook Server         | ✅ Trade Log              |
+|----------------------------|---------------------------|---------------------------|
 | ![](images/Screenshot1.png) | ![](images/Screenshot2.png) | ![](images/Screenshot3.png) |
 | ![](images/Screenshot4.png) | ![](images/Screenshot5.png) |
 
@@ -33,11 +29,7 @@ Generate from [uuidgenerator.net](https://www.uuidgenerator.net)
 API_KEY=tradingview_webhook_uk_bot
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
 🔑 2. Binance Testnet Keys
-Go to https://testnet.binance.vision
-
-Login with Binance
-
-Generate new API Key and Secret
+Create from https://testnet.binance.vision
 
 env
 Copy
@@ -49,23 +41,18 @@ USE_TESTNET=true
 env
 Copy
 Edit
-# Webhook Authentication
 API_KEY=tradingview_webhook_uk_bot
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
 
-# Binance Testnet Credentials
 BINANCE_API_KEY=3Mq4UvD1ObhsGFVphr9hi4zv5dFxZ6GIWT64G41E0X6aNXwNEnPM0NCHSV3MU8Wq
 BINANCE_API_SECRET=1cLewWfB6mxy98lda7gDVlt4ytW1n7uppebEjfpCbdZg149EaaEiqY6iPtPFcvXo
 USE_TESTNET=true
 
-# Symbols (Testnet supported)
 SYMBOLS=BNBUSDT,BTCUSDT,ETHUSDT
 
-# Defaults
 MAX_POSITION_SIZE=0.01
 COOLDOWN_SECONDS=60
 
-# Optional Per-Symbol Sizes
 MAX_POSITION_SIZE_BNB=0.1
 MAX_POSITION_SIZE_ETH=0.02
 MAX_POSITION_SIZE_BTC=0.005
@@ -81,15 +68,15 @@ bash
 Copy
 Edit
 python -m venv venv
-Activate:
+Activate (choose your OS):
 
 bash
 Copy
 Edit
-# Windows:
 venv\Scripts\activate
-
-# macOS/Linux:
+bash
+Copy
+Edit
 source venv/bin/activate
 3️⃣ Install Dependencies
 bash
@@ -101,7 +88,7 @@ bash
 Copy
 Edit
 cp .env.example .env
-Then edit .env with your keys.
+Edit .env with your API keys.
 
 5️⃣ Start Webhook Server
 bash
@@ -120,9 +107,13 @@ Copy
 Edit
 docker-compose up --build
 2️⃣ Access API Docs
-http://localhost:8000/docs
+Visit:
 
-3️⃣ Send Webhook Test (Optional)
+bash
+Copy
+Edit
+http://localhost:8000/docs
+3️⃣ Test Webhook Manually
 bash
 Copy
 Edit
@@ -130,9 +121,7 @@ curl -X POST http://localhost:8000/webhook \
   -H "Content-Type: application/json" \
   -d '{"symbol": "BTCUSDT", "rsi": 30, "macd": -0.1, "side": "buy"}'
 📡 Connect to TradingView
-✅ Alert Payload Example
-In strategy.pine, your alert() should be like:
-
+✅ Example Pine Script Alert Payload
 pinescript
 Copy
 Edit
@@ -145,16 +134,14 @@ alert('{' +
   '"macd": "' + str.tostring(macdLine) + '"' +
 '}', freq=alert.freq_once_per_bar)
 🔗 Webhook URL
-Set in TradingView alerts:
-
 text
 Copy
 Edit
 http://<your-server-ip>:8000/webhook
-Ensure port 8000 is open on your VPS/firewall.
+Ensure port 8000 is open if you're using a cloud VPS.
 
 ✅ Features
-🤖 AI-based decision making (RSI, MACD, EMA crossover, etc.)
+🤖 AI-based decision making (RSI, MACD, EMA crossover)
 
 🧠 LSTM & rule-based logic
 
@@ -166,7 +153,7 @@ Ensure port 8000 is open on your VPS/firewall.
 
 ⚡ FastAPI webhook endpoint
 
-🐳 Docker + Local support
+🐳 Docker & virtual environment support
 
 🧪 Run Unit Tests
 bash
@@ -174,12 +161,11 @@ Copy
 Edit
 pytest tests/
 ⚠️ Disclaimer
-This bot operates on Binance Testnet. It’s for educational/testing use only.
-Do not use real funds unless you understand the risks involved.
+This bot operates on Binance Testnet only.
+It is meant for educational/testing purposes — do not use real funds unless you're fully aware of the risks.
 
 📝 License
 MIT License
 
 👨‍💻 Author
 Sarabpreet Bedi
-For questions, reach out via GitHub Issues.
