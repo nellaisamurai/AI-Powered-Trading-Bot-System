@@ -158,7 +158,7 @@ pytest tests/
 
 ⚠️ Disclaimer
 This bot operates on Binance Testnet only.
-It is meant for educational/testing purposes — do not use real funds unless you're fully aware of the risks.
+
 
 📝 License
 MIT License
