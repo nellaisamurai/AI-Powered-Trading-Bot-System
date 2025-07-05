@@ -66,9 +66,11 @@ cd AI-Powered-Trading-Bot-System
 2️⃣ Setup Virtual Environment
 
 python -m venv venv
-Activate (choose your OS):
 
+Activate (choose your OS):
+For Windows:
 venv\Scripts\activate
+For MacOS/Linux:
 source venv/bin/activate
 
 3️⃣ Install Dependencies
@@ -80,7 +82,7 @@ pip install -r requirements.txt
 cp .env.example .env
 Edit .env with your API keys.
 
-5️⃣ Start Webhook Server
+5️⃣  Run the Webhook Server (Locally)
 
 uvicorn webhook_server.main:app --reload --port 8000
 
@@ -88,7 +90,7 @@ uvicorn webhook_server.main:app --reload --port 8000
 
 python -m trading_bot.main
 
-🐳 Run via Docker
+🐳  Run via Docker (Optional)
 
 1️⃣ Build and Start
 
@@ -147,6 +149,94 @@ pytest tests/
 ⚠️ Disclaimer
 This bot operates exclusively on the Binance Testnet. It is also compatible with the live Binance API
 at the production level, accessible via the URL: https://www.binance.com/en/my/settings/api-management.
+
+1) The bot is designed to work with Binance Testnet by default. If you want to trade live, you can change the configuration to point to the live Binance API.
+2)Ensure that you have sufficient knowledge about risk management and that you’re operating in a test environment before going live.
+
+✅ Goal
+Add deployment support for the Trading Bot system on Render.com, so it automatically starts the FastAPI webhook server with environment variables from .env.
+
+🚀 Steps to Deploy to Render
+1️⃣ Prepare Render Configuration
+Render uses a render.yaml (or you can configure via the dashboard) to define services. For a FastAPI + Uvicorn app, here’s what you need:
+
+✅ render.yaml (Place this in the root directory)
+
+services:
+  - type: web
+    name: trading-bot-webhook
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn webhook_server.main:app --host 0.0.0.0 --port 8000"
+    plan: free
+    envVars:
+      - key: API_KEY
+        value: tradingview_webhook_uk_bot
+      - key: SECRET_KEY
+        value: d4f0c532-3905-449f-b7da-69ee07125da7
+      - key: BINANCE_API_KEY
+        value: your_testnet_api_key
+      - key: BINANCE_API_SECRET
+        value: your_testnet_api_secret
+      - key: USE_TESTNET
+        value: true
+      - key: SYMBOLS
+        value: BNBUSDT,BTCUSDT,ETHUSDT
+      - key: MAX_POSITION_SIZE
+        value: 0.01
+      - key: COOLDOWN_SECONDS
+        value: 60
+      - key: MAX_POSITION_SIZE_BNB
+        value: 0.1
+      - key: MAX_POSITION_SIZE_ETH
+        value: 0.02
+      - key: MAX_POSITION_SIZE_BTC
+        value: 0.005
+💡 You can also use Render’s dashboard UI to manually add these environment variables under your web service settings.
+
+2️⃣ Make the Project Render-Compatible
+Ensure the following are in place:
+
+requirements.txt – already present.
+
+webhook_server/main.py – FastAPI entry point is correct.
+
+startCommand in render.yaml uses uvicorn.
+
+3️⃣ Push Your Repo to GitHub
+If not already done:
+git init
+git remote add origin https://github.com/yourusername/your-repo.git
+git add .
+git commit -m "Add Render deployment support"
+git push -u origin main
+
+4️⃣ Deploy on Render
+Go to https://dashboard.render.com
+
+Click "New Web Service"
+
+Connect your GitHub repo
+
+Select the correct branch
+
+Choose the environment as Python
+
+If not using render.yaml, paste the Start Command:
+
+uvicorn webhook_server.main:app --host 0.0.0.0 --port 8000
+Add all environment variables via UI
+
+✅ Optional: Add Render Badge
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+📡 Webhook URL on Render
+
+Once deployed, your public webhook will be:
+
+https://<your-render-app-name>.onrender.com/webhook
+Use this in your TradingView alerts.
 
 
 📝 License
