@@ -95,8 +95,8 @@ venv\Scripts\activate
 source venv/bin/activate
 
 3. Install Dependencies
->
-pip install -r requirements.txt
+
+'pip install -r requirements.txt'
 
 4. Configure Environment
 >
