@@ -29,6 +29,7 @@ Generate from [uuidgenerator.net](https://www.uuidgenerator.net)
 ```env
 API_KEY=tradingview_webhook_uk_bot  #create your own key 
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7  # generate from uuidgenerator.net
+
 🔑 2. Binance Testnet Keys
 Create from https://testnet.binance.vision
 env
@@ -36,6 +37,7 @@ env
 BINANCE_API_KEY=your_testnet_api_key   
 BINANCE_API_SECRET=your_testnet_api_secret   
 USE_TESTNET=true
+
 ⚙️ Example .env File
 env
 
