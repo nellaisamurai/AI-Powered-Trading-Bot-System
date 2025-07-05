@@ -1,0 +1,65 @@
+//@version=6
+strategy("AI Bot Strategy with Secure Webhook", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=100)
+
+// === Input Parameters ===
+cooldownMins = input.int(15, title="Cooldown in Minutes")
+cooldownBars = math.round(cooldownMins * 60 / timeframe.in_seconds(timeframe.period))
+
+// === Indicators ===
+// EMA Crossover
+emaFast = ta.ema(close, 50)
+emaSlow = ta.ema(close, 200)
+emaBullish = ta.crossover(emaFast, emaSlow)
+emaBearish = ta.crossunder(emaFast, emaSlow)
+
+// RSI
+rsi = ta.rsi(close, 14)
+rsiBullish = rsi < 30
+rsiBearish = rsi > 70
+
+// MACD
+[macdLine, signalLine, _] = ta.macd(close, 12, 26, 9)
+macdBullish = ta.crossover(macdLine, signalLine)
+macdBearish = ta.crossunder(macdLine, signalLine)
+
+// Bollinger Bands
+basis = ta.sma(close, 20)
+dev = 2 * ta.stdev(close, 20)
+upper = basis + dev
+lower = basis - dev
+bbBullish = close < lower
+bbBearish = close > upper
+
+// Stochastic Oscillator
+k = ta.stoch(close, high, low, 14)
+d = ta.sma(k, 3)
+stochBullish = ta.crossover(k, d) and k < 20
+stochBearish = ta.crossunder(k, d) and k > 80
+
+// === Signal Logic ===
+longSignal = emaBullish and (rsiBullish or macdBullish or bbBullish or stochBullish)
+shortSignal = emaBearish and (rsiBearish or macdBearish or bbBearish or stochBearish)
+
+// === Cooldown Handling ===
+var int lastSignalBar = na
+cooldownActive = not na(lastSignalBar) and (bar_index - lastSignalBar) < cooldownBars
+canTrade = not cooldownActive
+
+// === Strategy Execution ===
+if canTrade and longSignal
+    strategy.entry("Long", strategy.long)
+    lastSignalBar := bar_index
+    alert('{' +'"api_key": "tradingview_webhook_uk_bot",' + '"symbol": "' + syminfo.ticker + '",' +'"price": "' + str.tostring(close, format.mintick) + '",' +'"side": "buy",' +'"rsi": "' + str.tostring(rsi, "#.##") + '",' + '"macd": "' + str.tostring(macdLine, "#.##") + '"' + '}', freq=alert.freq_once_per_bar)
+
+if canTrade and shortSignal
+    strategy.entry("Short", strategy.short)
+    lastSignalBar := bar_index
+    alert('{' +'"api_key": "tradingview_webhook_uk_bot",' +'"symbol": "' + syminfo.ticker + '",' +'"price": "' + str.tostring(close, format.mintick) + '",' + '"side": "sell",' +'"rsi": "' + str.tostring(rsi, "#.##") + '",' +'"macd": "' + str.tostring(macdLine, "#.##") + '"' + '}',freq=alert.freq_once_per_bar)
+
+// === Plotting ===
+plot(emaFast, color=color.blue, title="EMA 50")
+plot(emaSlow, color=color.orange, title="EMA 200")
+plotshape(longSignal and canTrade, location=location.belowbar, color=color.green, style=shape.triangleup, title="Buy Signal")
+plotshape(shortSignal and canTrade, location=location.abovebar, color=color.red, style=shape.triangledown, title="Sell Signal")
+
+
