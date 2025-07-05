@@ -145,7 +145,8 @@ Ensure port 8000 is open if you're using a cloud VPS.
 pytest tests/
 
 ⚠️ Disclaimer
-This bot operates exclusively on the Binance Testnet. It is also compatible with the live Binance API at the production level, accessible via the URL: https://www.binance.com/en/my/settings/api-management.
+This bot operates exclusively on the Binance Testnet. It is also compatible with the live Binance API
+at the production level, accessible via the URL: https://www.binance.com/en/my/settings/api-management.
 
 
 📝 License
