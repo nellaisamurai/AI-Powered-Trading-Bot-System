@@ -30,17 +30,14 @@ API_KEY=tradingview_webhook_uk_bot
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
 🔑 2. Binance Testnet Keys
 Create from https://testnet.binance.vision
-
 env
-Copy
-Edit
+
 BINANCE_API_KEY=your_testnet_api_key
 BINANCE_API_SECRET=your_testnet_api_secret
 USE_TESTNET=true
 ⚙️ Example .env File
 env
-Copy
-Edit
+
 API_KEY=tradingview_webhook_uk_bot
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
 
@@ -56,75 +53,73 @@ COOLDOWN_SECONDS=60
 MAX_POSITION_SIZE_BNB=0.1
 MAX_POSITION_SIZE_ETH=0.02
 MAX_POSITION_SIZE_BTC=0.005
+
 🧪 Run Locally (Virtual Environment)
+
 1️⃣ Clone the Repo
 bash
-Copy
-Edit
+
 git clone https://github.com/SarabpreetBedi/AI-Powered-Trading-Bot-System.git
 cd AI-Powered-Trading-Bot-System
+
 2️⃣ Setup Virtual Environment
 bash
-Copy
-Edit
+
 python -m venv venv
 Activate (choose your OS):
 
 bash
-Copy
-Edit
+
 venv\Scripts\activate
 bash
-Copy
-Edit
+
 source venv/bin/activate
 3️⃣ Install Dependencies
 bash
-Copy
-Edit
+
 pip install -r requirements.txt
+
 4️⃣ Create .env File
 bash
-Copy
-Edit
+
 cp .env.example .env
 Edit .env with your API keys.
 
 5️⃣ Start Webhook Server
 bash
-Copy
-Edit
+
 uvicorn webhook_server.main:app --reload --port 8000
+
 6️⃣ Test Signal Manually
 bash
-Copy
-Edit
+
 python -m trading_bot.main
+
 🐳 Run via Docker
 1️⃣ Build and Start
 bash
-Copy
-Edit
+
 docker-compose up --build
+
 2️⃣ Access API Docs
 Visit:
 
 bash
-Copy
-Edit
+
 http://localhost:8000/docs
+
 3️⃣ Test Webhook Manually
 bash
-Copy
-Edit
+
 curl -X POST http://localhost:8000/webhook \
   -H "Content-Type: application/json" \
   -d '{"symbol": "BTCUSDT", "rsi": 30, "macd": -0.1, "side": "buy"}'
+
+
 📡 Connect to TradingView
 ✅ Example Pine Script Alert Payload
 pinescript
-Copy
-Edit
+
 alert('{' +
   '"api_key": "tradingview_webhook_uk_bot",' +
   '"symbol": "' + syminfo.ticker + '",' +
@@ -133,10 +128,11 @@ alert('{' +
   '"rsi": "' + str.tostring(rsi) + '",' +
   '"macd": "' + str.tostring(macdLine) + '"' +
 '}', freq=alert.freq_once_per_bar)
+
+
 🔗 Webhook URL
 text
-Copy
-Edit
+
 http://<your-server-ip>:8000/webhook
 Ensure port 8000 is open if you're using a cloud VPS.
 
@@ -157,9 +153,9 @@ Ensure port 8000 is open if you're using a cloud VPS.
 
 🧪 Run Unit Tests
 bash
-Copy
-Edit
+
 pytest tests/
+
 ⚠️ Disclaimer
 This bot operates on Binance Testnet only.
 It is meant for educational/testing purposes — do not use real funds unless you're fully aware of the risks.
