@@ -33,14 +33,16 @@ SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7  # generate from uuidgenerator.n
 Create from https://testnet.binance.vision
 env
 
-BINANCE_API_KEY=your_testnet_api_key
-BINANCE_API_SECRET=your_testnet_api_secret
+BINANCE_API_KEY=your_testnet_api_key   
+BINANCE_API_SECRET=your_testnet_api_secret   
 USE_TESTNET=true
 ⚙️ Example .env File
 env
 
-API_KEY=tradingview_webhook_uk_bot
-SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
+API_KEY=tradingview_webhook_uk_bot  #create your own key 
+SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7    # generate from uuidgenerator.net
+
+#Create from https://testnet.binance.vision
 
 BINANCE_API_KEY=your_testnet_api_key
 BINANCE_API_SECRET=your_testnet_api_secret
@@ -122,7 +124,7 @@ curl -X POST http://localhost:8000/webhook \
 pinescript
 
 alert('{' +
-  '"api_key": "tradingview_webhook_uk_bot",' +
+  '"api_key": "tradingview_webhook_uk_bot",' +  #create and use your own key
   '"symbol": "' + syminfo.ticker + '",' +
   '"price": "' + str.tostring(close) + '",' +
   '"side": "buy",' +
