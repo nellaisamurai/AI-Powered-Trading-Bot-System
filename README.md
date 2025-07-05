@@ -77,12 +77,12 @@ MAX_POSITION_SIZE_BTC=0.005
 
 🧪 Run Locally (Virtual Environment)
 1. Clone the Repository
-bash
+
 git clone https://github.com/SarabpreetBedi/AI-Powered-Trading-Bot-System.git
 cd AI-Powered-Trading-Bot-System
 
 3. Setup Virtual Environment
-bash
+
 python -m venv venv
 
 # Windows:
@@ -92,34 +92,34 @@ venv\Scripts\activate
 source venv/bin/activate
 
 3. Install Dependencies
-bash
+
 pip install -r requirements.txt
 
 4. Configure Environment
-bash
+
 cp .env.example .env
 
 # Then edit .env with your API keys and symbols
 5. Start Webhook Server
-bash
+
 uvicorn webhook_server.main:app --reload --port 8000
 
 7. Test Signal Handling
-bash
+
 python -m trading_bot.main
 
 🐳 Run with Docker
 
 1. Build & Start Containers
-bash
+
 docker-compose up --build
 
 3. Access FastAPI Docs
-bash
+
 http://localhost:8000/docs
 
 3. Manually Trigger a Webhook
-bash
+
 
 curl -X POST http://localhost:8000/webhook \
   -H "Content-Type: application/json" \
@@ -146,7 +146,7 @@ json
 
 2. Set Webhook URL
 Use your server's public IP:
-bash
+
 
 http://<your-ip>:8000/webhook
 TradingView Settings	Webhook Example
@@ -167,7 +167,7 @@ TradingView Settings	Webhook Example
 🐳 Docker support
 
 🧪 Run Unit Tests
-bash
+
 pytest tests/
 
 ⚠️ Disclaimer
