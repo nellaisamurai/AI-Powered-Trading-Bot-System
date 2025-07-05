@@ -26,7 +26,6 @@ An intelligent crypto trading bot built with Python, Binance Testnet, TradingVie
 
 Generate from [uuidgenerator.net](https://www.uuidgenerator.net)
 
-```env
 API_KEY=tradingview_webhook_uk_bot  #create your own key 
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7  # generate from uuidgenerator.net
 
