@@ -32,13 +32,11 @@ SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7  # generate from uuidgenerator.n
 🔑 2. Binance Testnet Keys
 Create from https://testnet.binance.vision
 
-
 BINANCE_API_KEY=your_testnet_api_key   
 BINANCE_API_SECRET=your_testnet_api_secret   
 USE_TESTNET=true
 
 ⚙️ Example .env File
-
 
 API_KEY=tradingview_webhook_uk_bot  #create your own key 
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7    # generate from uuidgenerator.net
@@ -62,40 +60,31 @@ MAX_POSITION_SIZE_BTC=0.005
 
 1️⃣ Clone the Repo
 
-
 git clone https://github.com/SarabpreetBedi/AI-Powered-Trading-Bot-System.git
 cd AI-Powered-Trading-Bot-System
 
 2️⃣ Setup Virtual Environment
 
-
 python -m venv venv
 Activate (choose your OS):
 
-
-
 venv\Scripts\activate
-
-
 source venv/bin/activate
-3️⃣ Install Dependencies
 
+3️⃣ Install Dependencies
 
 pip install -r requirements.txt
 
 4️⃣ Create .env File
-
 
 cp .env.example .env
 Edit .env with your API keys.
 
 5️⃣ Start Webhook Server
 
-
 uvicorn webhook_server.main:app --reload --port 8000
 
 6️⃣ Test Signal Manually
-
 
 python -m trading_bot.main
 
@@ -103,18 +92,13 @@ python -m trading_bot.main
 
 1️⃣ Build and Start
 
-
 docker-compose up --build
 
 2️⃣ Access API Docs
 Visit:
-
-
-
 http://localhost:8000/docs
 
 3️⃣ Test Webhook Manually
-
 
 curl -X POST http://localhost:8000/webhook \
   -H "Content-Type: application/json" \
@@ -157,7 +141,6 @@ Ensure port 8000 is open if you're using a cloud VPS.
 🐳 Docker & virtual environment support
 
 🧪 Run Unit Tests
-
 
 pytest tests/
 
