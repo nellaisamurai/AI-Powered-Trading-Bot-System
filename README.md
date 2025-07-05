@@ -16,7 +16,7 @@ An intelligent crypto trading bot built with Python, Binance Testnet, TradingVie
 |----------------------------|---------------------------|---------------------------|
 | ![](images/Screenshot1.png) | ![](images/Screenshot2.png) | ![](images/Screenshot3.png) |
 | ![](images/Screenshot4.png) | ![](images/Screenshot5.png) | ![](images/Screenshot6.png) |
-| ![](images/Screenshot7.png) | ![](images/Screenshot8.png) |
+| ![](images/Screenshot7.png) | ![](images/Screenshot8.png) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 ---
 
@@ -150,11 +150,14 @@ pytest tests/
 This bot operates exclusively on the Binance Testnet. It is also compatible with the live Binance API
 at the production level, accessible via the URL: https://www.binance.com/en/my/settings/api-management.
 
-1) The bot is designed to work with Binance Testnet by default. If you want to trade live, you can change the configuration to point to the live Binance API.
-2)Ensure that you have sufficient knowledge about risk management and that you’re operating in a test environment before going live.
+1) The bot is designed to work with Binance Testnet by default. If you want to trade live,
+you can change the configuration to point to the live Binance API.
+2)Ensure that you have sufficient knowledge about risk management and
+that you’re operating in a test environment before going live.
 
 ✅ Goal
-Add deployment support for the Trading Bot system on Render.com, so it automatically starts the FastAPI webhook server with environment variables from .env.
+Add deployment support for the Trading Bot system on Render.com, so
+it automatically starts the FastAPI webhook server with environment variables from .env.
 
 🚀 Steps to Deploy to Render
 1️⃣ Prepare Render Configuration
@@ -227,9 +230,6 @@ If not using render.yaml, paste the Start Command:
 uvicorn webhook_server.main:app --host 0.0.0.0 --port 8000
 Add all environment variables via UI
 
-✅ Optional: Add Render Badge
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 📡 Webhook URL on Render
 
