@@ -40,43 +40,38 @@ Generate a new API Key and Secret
 Add to your .env:
 
 ⚙️ Example .env File
- ```env
+```env
 BINANCE_API_KEY=your_testnet_api_key
-
 BINANCE_API_SECRET=your_testnet_api_secret
-
 USE_TESTNET=true
 
 
 # Webhook Auth
- ```env
+```env
 API_KEY=tradingview_webhook_uk_bot
-
 SECRET_KEY=d4f0c532-3905-449f-b7da-69ee07125da7
 
 # Binance Testnet Keys
- ```env
+```env
 BINANCE_API_KEY=3Mq4UvD1ObhsGFVphr9hi4zv5dFxZ6GIWT64G41E0X6aNXwNEnPM0NCHSV3MU8Wq
-
 BINANCE_API_SECRET=1cLewWfB6mxy98lda7gDVlt4ytW1n7uppebEjfpCbdZg149EaaEiqY6iPtPFcvXo
-
 USE_TESTNET=true
 
 # Binance Testnet Supported Symbols
- ```env
+
 # BNBUSDT, BTCUSDT, ETHUSDT, LTCUSDT, TRXUSDT, XRPUSDT, USDT, BUSD
 
 # Trade Symbols
- ```env
+
 SYMBOLS=BNBUSDT,BTCUSDT,ETHUSDT
 
 # Global Defaults
- ```env
+
 MAX_POSITION_SIZE=0.01
 COOLDOWN_SECONDS=60
 
 # Per-symbol Overrides (optional)
- ```env
+
 MAX_POSITION_SIZE_BNB=0.1
 MAX_POSITION_SIZE_ETH=0.02
 MAX_POSITION_SIZE_BTC=0.005
